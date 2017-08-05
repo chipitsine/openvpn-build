@@ -27,7 +27,7 @@
 # CHOST=i586-pc-linux-uclibc CBUILD=i686-pc-linux-gnu ./build
 #
 
-set -e
+set -ex
 
 die() {
 	local m="$1"

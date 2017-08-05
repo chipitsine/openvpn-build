@@ -191,6 +191,10 @@ build_dep() {
 		echo "Build openssl"
 		cd "${BUILDROOT}/openssl"* || die "cd openssl"
 
+		echo '========================='
+		echo ${VIRTUAL_CHOST}
+		echo '========================='
+
 		./Configure --prefix="/${TARGET_ROOT}" --cross-compile-prefix=${CHOST:+${CHOST}-} \
 			$(empty_ifelse "${DO_STATIC}" shared no-dso) \
 			$(CHOST="${VIRTUAL_CHOST}" "${SCRIPTROOT}/gentoo.config-0.9.8") \

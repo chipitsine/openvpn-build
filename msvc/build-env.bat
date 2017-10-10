@@ -22,7 +22,7 @@ if "%VSCOMNTOOLS%"=="" SET VSCOMNTOOLS=%ProgramFiles(x86)%\Microsoft Visual Stud
 if "%VSHOME%"=="" SET VSHOME=%VSCOMNTOOLS%\..\..
 if "%VCHOME%"=="" SET VCHOME=%VSHOME%\VC
 
-if "%P7Z%"=="" SET P7Z=tools\7za.exe
+if "%P7Z%"=="" SET P7Z=7z.exe
 if "%GIT%"=="" SET GIT=c:\Program Files\Git\bin\git.exe
 
 if "%TARGET%"=="" SET TARGET=%ROOT%\image

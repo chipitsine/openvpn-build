@@ -14,7 +14,7 @@ set PKCS11_URL=http://downloads.sourceforge.net/project/opensc/pkcs11-helper/pkc
 set TAP_URL=https://github.com/downloads/OpenVPN/tap-windows/tap-windows-%TAP_VERSION%.zip
 set OPENVPN_URL=https://github.com/downloads/OpenVPN/openvpn/openvpn-%OPENVPN_VERSION%.tar.gz
 set OPENVPN_GIT=https://github.com/OpenVPN/openvpn.git
-set P7ZIP_URL=http://garr.dl.sourceforge.net/project/sevenzip/7-Zip/9.20/7za920.zip
+set P7ZIP_URL=https://downloads.sourceforge.net/project/sevenzip/7-Zip/9.20/7za920.zip
 
 if "%ProgramFiles(x86)%"=="" SET ProgramFiles(x86)=%ProgramFiles%
 if "%VSCOMNTOOLS%"=="" SET VSCOMNTOOLS=%ProgramFiles(x86)%\Microsoft Visual Studio 10.0\Common7\Tools

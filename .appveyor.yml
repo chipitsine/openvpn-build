@@ -1,6 +1,6 @@
 version: 1.0.{build}
 environment:
-  P7Z: 7za.exe
+  P7Z: 7z.exe
 build_script:
 - cmd: >-
     cd msvc

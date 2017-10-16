@@ -1,52 +1,67 @@
 sudo: required
 dist: trusty
-
 os: linux
 language: cpp
 compiler: gcc
-
 addons:
   apt:
-    packages: [ man2html, dos2unix, nsis ]
-
+    packages:
+    - man2html
+    - dos2unix
+    - nsis
 env:
   global:
-    - CBUILD=x86_64-pc-linux-gnu
-    - IMAGEROOT=${HOME}/image
-
+  - CBUILD=x86_64-pc-linux-gnu
+  - IMAGEROOT=${HOME}/image
 matrix:
   fast_finish: true
   include:
-    - compiler: ": Win32"
-      env: CHOST=i686-w64-mingw32 SCRIPT=generic/build
-    - compiler: ": Win64"
-      env: CHOST=x86_64-w64-mingw32 SCRIPT=generic/build
-    - compiler: ": Win32 + depcache"
-      env: CHOST=i686-w64-mingw32
-      script:
-        - generic/build --save-depcache=travis
-        - generic/build --use-depcache=travis
-    - compiler: ": Win64 + depcache"
-      env: CHOST=x86_64-w64-mingw32
-      script:
-        - generic/build --save-depcache=travis
-        - generic/build --use-depcache=travis
-    - compiler: ": snapshot"
-      script:
-        - windows-nsis/build-snapshot
-        - ls -lR
-    - compiler: ": complete"
-      env: SCRIPT=windows-nsis/build-complete
+  - compiler: ": Win32"
+    env: CHOST=i686-w64-mingw32 SCRIPT=generic/build
+  - compiler: ": Win64"
+    env: CHOST=x86_64-w64-mingw32 SCRIPT=generic/build
+  - compiler: ": Win32 + depcache"
+    env: CHOST=i686-w64-mingw32
+    script:
+    - generic/build --save-depcache=travis
+    - generic/build --use-depcache=travis
+  - compiler: ": Win64 + depcache"
+    env: CHOST=x86_64-w64-mingw32
+    script:
+    - generic/build --save-depcache=travis
+    - generic/build --use-depcache=travis
+  - compiler: ": snapshot"
+    deploy:
+      provider: releases
+      overwrite: true
+      skip_cleanup: true
+      api_key:
+        secure: lst0rxiqGysMWKHcsQXdqG0O0DUqengdUiR4yVnhySV0imvoM07zNjLtyXMI9aOGwZfBLMQD86c/8YRbPF7hXmsyOHvb0lzgRin3EGWGAL6vaau34erRx3nhVLEpWNEoAttxAwKPh+NwP1S6Tb7dg5tHPCCM5vogfDOgaYHmwpa+jzl1P+SZghurHP2Nf4IxvwZnBAZaKlF6B+MA5VnMQbvoWmrGFScVC+gEQot03pirLkFCcOCs9suLWDBw8cBWXNRabqjRhGIeoaRd7OXvu9PRFgjNHEYozsnyvgX0wslLpWvmqXJWWGhMPorq72ThmloTSU+dV4s1ssDr3dA0SyFr9oLU5UDUKeWoaktpEA/m5cqO2wLYjS9iYfpDD481IcHJYSBLaDHmQEpUfCapg6JoQEFaF0FmqTolCCrcK991Q1Uvt/i0SF5q5RZtkIFTRJbMr1pLEToxHNG/38a2p7Zp+vfpMmcx5UHeUJw2KCKAnrwV4EcU64kWF+cYGHxZ/vX8M1Qc80MHd75sejBKboWIKtXzV4uG6iH/5wEjCrdab+iZsJ/8lThdkADnvWeQfT/gl59C8UWv7C4fr+kQreuJUqnb11ewejyWisdLFtC2nbjnld3h/iblsIwCSQCLzYZoGl0i/4HeUH4JfOXcH8t9KIOROwdy1vXCi8qjpFM=
+        file: openvpn-install-2.5_git-I601.exe
+        on:
+          repo: chipitsine/openvpn-build
+          tags: true
+    script:
+    - windows-nsis/build-snapshot
+  - compiler: ": complete"
+    env: SCRIPT=windows-nsis/build-complete
   exclude:
-    - compiler: gcc
-
+  - compiler: gcc
 install:
-    - sudo apt-add-repository "deb http://archive.ubuntu.com/ubuntu xenial main universe"
-    - sudo apt-get update
-    - sudo apt-get -y install dpkg gcc-mingw-w64
-
+- sudo apt-add-repository "deb http://archive.ubuntu.com/ubuntu xenial main universe"
+- sudo apt-get update
+- sudo apt-get -y install dpkg gcc-mingw-w64
 before_script:
-    - unset CC; unset CXX
-
+- unset CC; unset CXX
 script:
-    - $SCRIPT
+- "$SCRIPT"
+deploy:
+  provider: releases
+  overwrite: true
+  skip_cleanup: true
+  api_key:
+    secure: lst0rxiqGysMWKHcsQXdqG0O0DUqengdUiR4yVnhySV0imvoM07zNjLtyXMI9aOGwZfBLMQD86c/8YRbPF7hXmsyOHvb0lzgRin3EGWGAL6vaau34erRx3nhVLEpWNEoAttxAwKPh+NwP1S6Tb7dg5tHPCCM5vogfDOgaYHmwpa+jzl1P+SZghurHP2Nf4IxvwZnBAZaKlF6B+MA5VnMQbvoWmrGFScVC+gEQot03pirLkFCcOCs9suLWDBw8cBWXNRabqjRhGIeoaRd7OXvu9PRFgjNHEYozsnyvgX0wslLpWvmqXJWWGhMPorq72ThmloTSU+dV4s1ssDr3dA0SyFr9oLU5UDUKeWoaktpEA/m5cqO2wLYjS9iYfpDD481IcHJYSBLaDHmQEpUfCapg6JoQEFaF0FmqTolCCrcK991Q1Uvt/i0SF5q5RZtkIFTRJbMr1pLEToxHNG/38a2p7Zp+vfpMmcx5UHeUJw2KCKAnrwV4EcU64kWF+cYGHxZ/vX8M1Qc80MHd75sejBKboWIKtXzV4uG6iH/5wEjCrdab+iZsJ/8lThdkADnvWeQfT/gl59C8UWv7C4fr+kQreuJUqnb11ewejyWisdLFtC2nbjnld3h/iblsIwCSQCLzYZoGl0i/4HeUH4JfOXcH8t9KIOROwdy1vXCi8qjpFM=
+  file: openvpn-install-2.5_git-I601.exe
+  on:
+    repo: chipitsine/openvpn-build
+    tags: true

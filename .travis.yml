@@ -32,7 +32,9 @@ matrix:
         - generic/build --save-depcache=travis
         - generic/build --use-depcache=travis
     - compiler: ": snapshot"
-      env: SCRIPT=windows-nsis/build-snapshot
+      script:
+        - windows-nsis/build-snapshot
+        - ls -lR
     - compiler: ": complete"
       env: SCRIPT=windows-nsis/build-complete
   exclude:

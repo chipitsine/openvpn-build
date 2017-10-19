@@ -41,7 +41,6 @@ matrix:
         file: windows-nsis/openvpn-install-2.5_git-I601.exe
         on:
           repo: chipitsine/openvpn-build
-          branch: automatic-releases
     script:
     - windows-nsis/build-snapshot
   - compiler: ": complete"

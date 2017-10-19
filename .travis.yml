@@ -14,9 +14,13 @@ matrix:
   fast_finish: true
   include:
   - compiler: ": Win32"
-    env: CHOST=i686-w64-mingw32 SCRIPT=generic/build
+    env: CHOST=i686-w64-mingw32
+    script:
+      - generic/build
   - compiler: ": Win64"
-    env: CHOST=x86_64-w64-mingw32 SCRIPT=generic/build
+    env: CHOST=x86_64-w64-mingw32
+    script:
+      - generic/build
   - compiler: ": Win32 + depcache"
     env: CHOST=i686-w64-mingw32
     script:
@@ -41,7 +45,8 @@ matrix:
     script:
     - windows-nsis/build-snapshot
   - compiler: ": complete"
-    env: SCRIPT=windows-nsis/build-complete
+    script:
+      - windows-nsis/build-complete
   exclude:
   - compiler: gcc
 install:
@@ -50,5 +55,3 @@ install:
 - sudo apt-get -y install dpkg gcc-mingw-w64
 before_script:
 - unset CC; unset CXX
-script:
-- "$SCRIPT"

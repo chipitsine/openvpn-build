@@ -206,7 +206,7 @@ build_dep() {
 		[ -n "${BUILD_FOR_WINDOWS}" ] && perl util/mkdef.pl crypto ssl NT update
 		[ -z "${OPENSSL_SKIP_DEPEND}" ] && ${MAKE} depend
 		${MAKE} install INSTALL_PREFIX="${INSTALL_ROOT}" INSTALLTOP="/" MANDIR="/tmp" > build.log 2>&1 \
-			|| (cat build.log && die "make openssl"
+			|| (cat build.log && die "make openssl")
 		rm -fr "${INSTALL_ROOT}/tmp"
 
 		[ -n "${SAVE_DEP_CACHE}" ] && depcache_save openssl

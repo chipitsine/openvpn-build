@@ -35,6 +35,7 @@ matrix:
       env: SCRIPT=windows-nsis/build-snapshot
       deploy:
         provider: releases
+        overwrite: true
         skip_cleanup: true
         api_key:
           secure: PO4ABHgQPoWHGmWxiN9bynDQ3qSAAQ4t+FxAcbs3iTktAewrm8JhWlCKIpI/Gy2Fa59KhY+sSk/Pa8svv80KT/bWpR70fUA6bR/4N+qMb0SjH5X4fOxtHMKbNcAibDytR5utFJ2OKZQZqXZNEaVUtzcuI7ffc2ElB6QYK5dR1GmryB1I6puZyr5X7T7XC61rwfWNL61UheC9VADeWBiTW0/ptYJtwgIi5QIAxYCzs1EJHhvdB3m50pdWWIarCy1WfEjwaRZuL40sFuaGFtjLfIz0ZtlrHsVvsoi3FYwgnGwxXNr00EPjoYHFqgqHgIFjFnDKx815TPzdQR52jawUXJ65Uv+NIEJwQReyWAJyivBJgQhcg4A0vP8SFHmJU74bJHG7ggPOYKD5fhH7zkLHkThWRCJC0zTj5eGw5ppHzi5Qe0DWn1g6qzLRNG/BM2/5QzBx4Gum0x0KKBKA+m3ylcQf1JlyG1nlpUdW4OooRMXs37lQD6a3eEN9EjSc1hJIG5sgsXGXNbiFGKcBlu0nLn2IUYBlH3pmr+6LBn4QvMSa7VqsaxslFDL9Pk9Iqv7ONb8ePYdlJEf52eaqaj5XgyUBdkj6AcRvTxycTa1PSu5W2y9bBYmiFkbbryy2noUkbSHUDE6aXR+7733eGwRZ5MdQi5DYtS19TPmlIke/UgU=

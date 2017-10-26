@@ -429,6 +429,10 @@ Function .onInit
 	${GetParameters} $R0
 	ClearErrors
 
+${If} ${AtLeastWinVista}
+	MessageBox MB_OK|MB_ICONEXCLAMATION "This package is intended for Windows XP/2003, please consider installing 2.4"
+${EndIf}
+
 	!insertmacro SelectByParameter ${SecAddShortcutsWorkaround} SELECT_SHORTCUTS 1
 	!insertmacro SelectByParameter ${SecOpenVPNUserSpace} SELECT_OPENVPN 1
 	!insertmacro SelectByParameter ${SecService} SELECT_SERVICE 1

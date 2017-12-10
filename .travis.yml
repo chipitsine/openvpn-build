@@ -9,6 +9,13 @@ addons:
   apt:
     packages: [ man2html, dos2unix, nsis ]
 
+cache:
+  ccache: true
+
+before_script:
+  - mkdir -p "${HOME}/bin"
+  - ln -s "$(which ccache)" "${HOME}/bin/${CHOST}-cc"
+
 env:
   global:
     - CBUILD=x86_64-pc-linux-gnu

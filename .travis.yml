@@ -8,6 +8,9 @@ compiler: gcc
 addons:
   apt:
     packages: [ man2html, dos2unix, nsis ]
+  artifacts:
+    paths:
+      - README
 
 env:
   global:

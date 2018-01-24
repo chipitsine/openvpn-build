@@ -544,11 +544,9 @@ Section "-OpenSSL DLLs" SecOpenSSLDLLs
 	SetOverwrite on
 	SetOutPath "$INSTDIR\bin"
 	${If} ${RunningX64}
-		File "${OPENVPN_ROOT_X86_64}\bin\libeay32.dll"
-		File "${OPENVPN_ROOT_X86_64}\bin\ssleay32.dll"
+		File /x liblzo2-2.dll /x libpkcs11-helper-1.dll "${OPENVPN_ROOT_X86_64}\bin\*.dll"
 	${Else}
-		File "${OPENVPN_ROOT_I686}\bin\libeay32.dll"
-		File "${OPENVPN_ROOT_I686}\bin\ssleay32.dll"
+		File /x liblzo2-2.dll /x libpkcs11-helper-1.dll "${OPENVPN_ROOT_I686}\bin\*.dll"
 	${EndIf}
 
 SectionEnd
@@ -777,10 +775,7 @@ Section "Uninstall"
 	Delete "$INSTDIR\bin\openvpn.exe"
 	Delete "$INSTDIR\bin\openvpnserv.exe"
 	Delete "$INSTDIR\bin\openvpnserv2.exe"
-	Delete "$INSTDIR\bin\libeay32.dll"
-	Delete "$INSTDIR\bin\ssleay32.dll"
-	Delete "$INSTDIR\bin\liblzo2-2.dll"
-	Delete "$INSTDIR\bin\libpkcs11-helper-1.dll"
+	Delete "$INSTDIR\bin\*.dll"
 
 	Delete "$INSTDIR\config\README.txt"
 	Delete "$INSTDIR\config\sample.${OPENVPN_CONFIG_EXT}.txt"

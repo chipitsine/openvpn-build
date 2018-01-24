@@ -22,9 +22,9 @@ matrix:
     - compiler: ": Win64"
       env: CHOST=x86_64-w64-mingw32
     - compiler: ": Win32 + static"
-      env: DO_REALLY_STATIC=1 CHOST=i686-w64-mingw32
+      env: DO_REALLY_STATIC=1 CHOST=i686-w64-mingw32 OPENSSL_VERSION=1.1.0g
     - compiler: ": Win64 + static"
-      env: DO_REALLY_STATIC=1 CHOST=x86_64-w64-mingw32
+      env: DO_REALLY_STATIC=1 CHOST=x86_64-w64-mingw32 OPENSSL_VERSION=1.1.0g
     - compiler: ": Win32 + depcache"
       env: CHOST=i686-w64-mingw32
       script:

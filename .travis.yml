@@ -25,12 +25,12 @@ matrix:
       env: CHOST=i686-w64-mingw32
       os: osx
       install:
-        - brew install mingw-w64
+        - brew install mingw-w64 man2html
     - compiler: ": Win64"
       env: CHOST=x86_64-w64-mingw32
       os: osx
       install:
-        - brew install mingw-w64
+        - brew install mingw-w64 man2html
     - compiler: ": Win32 + static"
       env: DO_REALLY_STATIC=1 CHOST=i686-w64-mingw32
     - compiler: ": Win64 + static"

@@ -30,7 +30,7 @@ for:
       - "%CYGWIN%\\bin\\bash -lc 'cp `which true` /usr/bin/man2html'"
       - "%CYGWIN%\\bin\\bash -lc 'cd /cygdrive/c/projects/%APPVEYOR_PROJECT_SLUG% ; generic/build'"
     on_failure:
-      - appveyor PushArtifact config.log
+      - appveyor PushArtifact generic\\tmp\\openvpn-2.4.7\\config.log
 
   -
     matrix:

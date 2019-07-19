@@ -39,6 +39,12 @@ matrix:
       env: SCRIPT=windows-nsis/build-snapshot
     - compiler: ": complete"
       env: SCRIPT=windows-nsis/build-complete
+    - os: windows
+       before_script:
+         - cd msvc
+       script:
+         - set MODE=DEPS&& build.bat
+         - set MODE=OPENVPN&& build.bat
   exclude:
     - compiler: gcc
 

@@ -43,10 +43,11 @@ matrix:
       before_script:
         - cd msvc
       script:
-        - set MODE=DEPS 
-        - build.bat
-        - set MODE=OPENVPN 
-        - build.bat
+        - export MODE=DEPS 
+        - pwd
+        - ls
+        - ./build.bat
+        - MODE=OPENVPN ./build.bat
   exclude:
     - compiler: gcc
 

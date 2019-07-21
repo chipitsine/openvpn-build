@@ -43,6 +43,7 @@ matrix:
       before_script:
         - cd msvc
       script:
+        - ls 'C:\Program Files (x86)\Microsoft Visual Studio\2017'
         - MODE=DEPS ./build.bat
         - MODE=OPENVPN ./build.bat
   exclude:

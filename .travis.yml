@@ -40,14 +40,10 @@ matrix:
     - compiler: ": complete"
       env: SCRIPT=windows-nsis/build-complete
     - os: windows
-      env: VCHOME="C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build"
       before_script:
         - cd msvc
       script:
-        - export MODE=DEPS 
-        - pwd
-        - ls
-        - ./build.bat
+        - MODE=DEPS ./build.bat
         - MODE=OPENVPN ./build.bat
   exclude:
     - compiler: gcc
